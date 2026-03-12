@@ -1,0 +1,1 @@
+# Will be used to generate responces, how I will do that has yet to be determined, so for now this will be just an empty file ):
