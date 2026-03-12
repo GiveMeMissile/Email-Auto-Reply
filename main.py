@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
-from time import sleep
+from time import sleep # I really want to do this, yet I musn't...
 import json
 
 def browser(playwright):
@@ -28,8 +28,15 @@ def browser(playwright):
     sleep(2)
 
     with context.expect_page() as new_tab:
+        sleep(1)
         tab1.get_by_role("button", name="Gmail").first.click()
-    sleep(10)
+    tab2 = new_tab.value
+    sleep(5)
+    
+    # Click the email row containing "Appily" instead of the table
+    email_row = tab2.locator("tr:has-text('Appily')")
+    email_row.click()
+    sleep(5)
 
 
 if __name__ == "__main__":
