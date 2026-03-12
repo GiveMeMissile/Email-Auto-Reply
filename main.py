@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup
 from time import sleep # I really want to do this, yet I musn't...
+import email_processor
 import json
 
 def browser(playwright):
@@ -25,18 +25,24 @@ def browser(playwright):
     sleep(1)
     tab1.get_by_role("textbox", name="password").fill(data["Password"])
     tab1.get_by_role("button", name="Go").click()
-    sleep(2)
 
+    # Get to gmail
     with context.expect_page() as new_tab:
         sleep(1)
         tab1.get_by_role("button", name="Gmail").first.click()
     tab2 = new_tab.value
-    sleep(5)
-    
-    # Click the email row containing "Appily" instead of the table
-    email_row = tab2.locator("tr:has-text('Appily')")
-    email_row.click()
-    sleep(5)
+
+    # Get gmail HTML
+    tab2.wait_for_selector(".Cp")
+    gmail_html = tab2.locator(".Cp").inner_html()
+
+    # Get the names of the unread Emails
+    unread_emails = email_processor.get_unread_emails(gmail_html)
+
+    # Test code to open an singular email
+    # email_row = tab2.locator("tr:has-text('Appily')")
+    # email_row.click()
+    # sleep(5)
 
 
 if __name__ == "__main__":
