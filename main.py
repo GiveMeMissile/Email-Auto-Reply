@@ -38,11 +38,19 @@ def browser(playwright):
 
     # Get the names of the unread Emails
     unread_emails = email_processor.get_unread_emails(gmail_html)
+    sleep(2)
+    access_email(tab2, unread_emails[0])
+    sleep(5)
 
-    # Test code to open an singular email
-    # email_row = tab2.locator("tr:has-text('Appily')")
-    # email_row.click()
-    # sleep(5)
+def access_email(tab, info):
+
+    email_row = tab.locator("tr:has-text('" + info[1] + "').zA.zE")
+    email_row.click()
+
+    tab.wait_for_selector(".ii.gt")
+    email_html = tab.locator(".ii.gt").inner_html()
+    email_processor.proccess_email_html(email_html)
+    
 
 
 if __name__ == "__main__":

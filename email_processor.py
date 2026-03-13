@@ -15,3 +15,13 @@ def get_unread_emails(html):
 
     return unread_emails_info
 
+def proccess_email_html(html):
+    soup = BeautifulSoup(html, "lxml")
+    email_text = soup.text.replace("\n", " ")
+    email_text = email_text.split()
+    text = ""
+    for part in email_text:
+        text += part + " "
+    email_text = text
+
+    return email_text
