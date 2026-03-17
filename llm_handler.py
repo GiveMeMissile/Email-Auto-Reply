@@ -22,6 +22,7 @@ class LLMManager:
         ai_input = self.template
         ai_input = ai_input.replace("<sender>", sender)
         ai_input = ai_input.replace("<email>", email_text)
+        ai_input = ai_input.replace("<eos>", self.tokenizer.decode(self.tokenizer.eos_token_id))
         return ai_input
 
     def forward(self, email_text, sender, ai_text): 
@@ -46,9 +47,11 @@ class LLMManager:
             # Return single token text output (duh)
             return generated_text
     
-    def stop_generating(self, token_text):
+    def stop_generating(self, token_text, ai_text):
 
         if token_text == self.tokenizer.decode(self.tokenizer.eos_token_id):
+            return True
+        elif "Sincerely, Dylan Beskar" in ai_text:
             return True
         else:
             return False

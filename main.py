@@ -47,13 +47,18 @@ def browser(playwright, ai_manager):
 
     # Get the names of the unread Emails
     unread_emails = email_processor.get_unread_emails(gmail_html)
-    email_text = access_email(tab2, unread_emails[0])
-    sleep(1)
-    respond_to_email(tab2, email_text, unread_emails[0], ai_manager)
+    for email in unread_emails:
+        email_text = access_email(tab2, email)
+        sleep(1)
+        respond_to_email(tab2, email_text, email, ai_manager)
+        sleep(5)
+        tab2.get_by_role("link", name="Inbox").click()
+        sleep(1)
+
 
 def access_email(tab, info):
 
-    email_row = tab.locator("tr:has-text('" + info[1] + "').zA.zE")
+    email_row = tab.locator("tr.zA.zE").filter(has_text=info[1])
     email_row.click()
 
     tab.wait_for_selector(".ii.gt")
@@ -64,6 +69,7 @@ def access_email(tab, info):
     tab.wait_for_load_state("domcontentloaded")
     return text
 
+
 def respond_to_email(tab, email_text, info, ai_manager):
     message_box = tab.get_by_role("textbox", name="Message Body")
     tokens = 0
@@ -71,15 +77,13 @@ def respond_to_email(tab, email_text, info, ai_manager):
     while True:
         ai_token = ai_manager.forward(email_text, info[0], ai_text)
         tokens += 1
-        print(f"AI Text: {ai_text}")
-        if ai_manager.stop_generating(ai_token):
+        if ai_manager.stop_generating(ai_token, ai_text):
             break
         elif tokens >= MAX_TOKENS:
             break
         else:
             ai_text += ai_token
             message_box.fill(ai_text)
-
 
 
 if __name__ == "__main__":

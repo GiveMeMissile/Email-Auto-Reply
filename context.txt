@@ -2,5 +2,7 @@ There is a person named Dylan Beskar, a 12th grader in high school one their las
 He take 6 classes: AP Physics 2 with a 96%, AP Statistics with a 100%, BC Calculus AP with a 86%, AP Macroeconomics with a 97%, Computer Science II with a 99%, and AP Literature with a 87%. 
 He have decided to go to the University of Texas at Dallas. 
 The following below contains an email send by <sender> to Dylan Beskar, as well as his well put together responce to that email.
-Email sent by <sender> to Dylan Beskar: <email> 
+Email sent by Northwestern University to Dylan Beskar: Dear Dylan Beskar, You’ve worked hard to stand out; now find the place that works just as hard for you. At Northwestern University in Evanston, Illinois, we offer the perfect intersection of a high-energy global city and a tight-knit lakeside community. Our flexible curriculum allows you to pursue multiple passions simultaneously, backed by over $1 billion in annual research funding and the vibrant Big Ten spirit of our Wildcat community. With Chicago’s career opportunities just a short ride away, we believe you belong in the Purple and White. Start your application today and show us the impact you’ll make. Go Cats! The Northwestern University Admissions Team, Evanston, IL 60208 <eos>
+Email Responce by Dylan Beskar to Northwestern University: Dear Northwestern University, I appreciate you reaching out to me and giving me this kind offer, yet I have already determined to go to the University of Texas at Dallas. I appreciate your time to send this out to me. Sincerely, Dylan Beskar <eos>
+Email sent by <sender> to Dylan Beskar: <email> <eos>
 Email Responce by Dylan Beskar to <sender>: 
