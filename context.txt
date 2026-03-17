@@ -1,0 +1,6 @@
+There is a person named Dylan Beskar, a 12th grader in high school one their last semester of high school. 
+He take 6 classes: AP Physics 2 with a 96%, AP Statistics with a 100%, BC Calculus AP with a 86%, AP Macroeconomics with a 97%, Computer Science II with a 99%, and AP Literature with a 87%. 
+He have decided to go to the University of Texas at Dallas. 
+The following below contains an email send by <sender> to Dylan Beskar, as well as his well put together responce to that email.
+Email sent by <sender> to Dylan Beskar: <email> 
+Email Responce by Dylan Beskar to <sender>: 
